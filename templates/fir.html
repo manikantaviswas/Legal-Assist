@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/fir.css">
+    <title>Format of the F.I.R.</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Format of the F.I.R.</h1>
+        
+        <div class="form-header">
+            <div></div>
+            <div class="book-no">
+                <span class="label-text">FIR No.</span>
+                <input type="text" class="line-input" style="width: 200px;" value="{{ data.fir_no }}" readonly>
+            </div>
+        </div>
+        <div class="form-title">First Information Report</div>
+        <div class="form-subtitle">First Information of a Cognizable Crime Reported under Section 154, Criminal Penal Code</div>
+        
+        <div class="form-field inline-fields">
+            <span class="label-text">Police Station</span>
+            <input type="text" class="line-input" style="width: 35%;" value="{{ data.police_station }}" readonly>
+            <span class="label-text">District</span>
+            <input type="text" class="line-input" style="width: 35%;" value="{{ data.district }}" readonly>
+            <span class="label-text">No</span>
+            <input type="text" class="line-input" style="width: 15%;" value="{{ data.station_no }}" readonly>
+        </div>
+        
+        <div class="form-field inline-fields">
+            <span class="label-text">Date and hour of Occurrence</span>
+            <input type="text" class="line-input" style="width: 70%;" value="{{ data.occurrence_datetime }}" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">1.</span>
+            <label>Date and hour when reported</label>
+            <input type="text" id="currentDateTime" class="line-input current-date-time" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">2.</span>
+            <label>Name and residence of informer and complainant.</label>
+            <input type="text" class="line-input" value="{{ data.informer_details }}" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">3.</span>
+            <label>Brief description of offence (with section) and of property carried off, if any.</label>
+            <textarea id="offenceDescription" rows="5"></textarea>
+            <div class="char-counter"><span id="charCount">0</span> characters</div>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">4.</span>
+            <label>Place of occurrence and distance and direction from the Police Station.</label>
+            <input type="text" class="line-input" value="{{ data.place_of_occurrence }}" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">5.</span>
+            <label>Name & Address of the Criminal.</label>
+            <input type="text" class="line-input" value="{{ data.criminal_details }}" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">6.</span>
+            <label>Steps taken regarding investigation explanation of delay in regarding information.</label>
+            <input type="text" class="line-input" value="{{ data.investigation_steps }}" readonly>
+        </div>
+        
+        <div class="form-field numbered-item">
+            <span class="number">7.</span>
+            <label>Date and Time of despatch from Police Station.</label>
+            <input type="text" class="line-input" value="{{ data.despatch_datetime }}" readonly>
+        </div>
+        
+        <div class="form-field inline-fields">
+            <span class="label-text">Signature</span>
+            <input type="text" class="line-input" style="width: 70%;">
+        </div>
+        
+        <div class="form-field inline-fields">
+            <span class="label-text">Designation</span>
+            <input type="text" class="line-input" style="width: 70%;" value="{{ data.designation }}" readonly>
+        </div>
+        
+        <div class="note">
+            (First information to be recorded below)
+        </div>
+        
+        <div class="note">
+            <strong>NOTE:-</strong> The signature of seal or thumb impression of the informer should be at the end of the information and the signature of the Writer of (FIR) should be existed as usual.
+        </div>
+        
+        <div class="note">
+            The above is the format and below is the law on the basis of which the cognizable crime is recorded
+        </div>
+        
+        <div class="section-title">F.I.R. ON AUTHENTIC INFORMATION</div>
+        
+        <div class="authentic-info">
+            The information given to the Police Officer for registration of a case must be authentic. It should not be gossip but should be traced to an individual who should be responsible for spreading information. It may be hearsay but the person in possession of hearsay should mention the source of information and take responsibility for it. An irresponsible rumour should not result in registration of F.I.R.
+        </div>
+    </div>
+
+    <script>
+        // Set current date and time in the "Date and hour when reported" field
+        function setCurrentDateTime() {
+            const now = new Date();
+            
+            // Format the date and time
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true
+            };
+            
+            const formattedDateTime = now.toLocaleDateString('en-US', options);
+            document.getElementById('currentDateTime').value = formattedDateTime;
+        }
+
+        // Make all input fields automatically expand as you type
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date and time when the page loads
+            setCurrentDateTime();
+            
+            const inputs = document.querySelectorAll('input[type="text"], .line-input:not(#currentDateTime)');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.backgroundColor = "#ffffdd";
+                    this.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.backgroundColor = "transparent";
+                    this.style.boxShadow = "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
