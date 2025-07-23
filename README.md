@@ -6,10 +6,6 @@ In many police stations, the absence of legal experts often leads to mistakes in
 
 **Legal Assist** was built to solve this problem by providing instant, reliable legal suggestions through an wedsite. Our goal is to empower police officers and users with immediate access to relevant legal provisions, case laws, and landmark judgments simply by writing or speaking the incident.
 
-## 📽 Demo Video
-
-[legal\_assist\_demo.webm](https://github.com/user-attachments/assets/your_demo_link_here)
-*Uploading legal\_assist\_demo.mp4…*
 
 ## 🚀 What It Does
 
